@@ -1,0 +1,27 @@
+// IDL file for test schema.
+
+namespace test;
+
+struct test_struct {
+    short_field:short;
+    long_field:ulong;
+}
+
+table nested_test_table {
+            log_field:long;              // A vector which can  hold UTF-8 or 7-bit ASCII NULL terminated buffer
+            nest_table_struct_field:test_struct;    // A structure member
+}
+
+table Test_msg {
+            long_field:ulong = 0;        // A value of type compatible to long/ulong/uint64_t
+            int_field:uint = 0;          // A value of type compatible to int/uint32_t
+            short_field:short = 0;       // A value of type compatible to int16_t/uint16_t
+            byte_field:byte = 0;         // A value of type compatible to int8_t/uchar_t
+            arr_field:[byte];            // A vector/array of type compatible to int8_t/uchar_t
+            name:string;                 // A vector which can  hold UTF-8 or 7-bit ASCII NULL terminated buffer
+            struct_field:test_struct;    // A structure member
+            table_field:nested_test_table;     // A table member
+}
+
+root_type Test_msg;
+
